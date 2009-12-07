@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.bug</groupId>
+    <artifactId>BugAll</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <groupId>com.bug</groupId>
+  <artifactId>BugTest</artifactId>
+  <version>${all.version}</version>  
+  <packaging>apk</packaging>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>android</groupId>
+      <artifactId>android</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.bug</groupId>
+      <artifactId>Common</artifactId>
+      <version>${all.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.bug</groupId>
+      <artifactId>Bug</artifactId>
+      <version>${all.version}</version>
+      <type>apk</type>
+    </dependency>
+    <dependency>
+      <groupId>com.bug</groupId>
+      <artifactId>Bug</artifactId>
+      <version>${all.version}</version>
+      <scope>compile</scope>
+      <type>jar</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+	<plugins>
+      <plugin>
+        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+        <artifactId>maven-android-plugin</artifactId>
+        <version>2.2.0</version>
+        <configuration>
+          <sdk>
+            <path>${env.ANDROID_SDK}</path>
+            <platform>2.0</platform>
+          </sdk>
+          <deleteConflictingFiles>true</deleteConflictingFiles>
+        </configuration>
+        <extensions>true</extensions>
+      </plugin>
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-source-plugin</artifactId>
+		<version>2.1</version>
+		<executions>
+		  <execution>
+			<goals>
+              <goal>test-jar-no-fork</goal>
+			</goals>
+		  </execution>
+		</executions>
+	  </plugin>
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-javadoc-plugin</artifactId>
+		<executions>
+		  <execution>
+			<goals>
+			  <goal>jar</goal>
+			</goals>
+		  </execution>
+		</executions>
+	  </plugin>
+	</plugins>
+  </build>
+
+</project>
