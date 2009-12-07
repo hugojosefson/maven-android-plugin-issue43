@@ -69,7 +69,7 @@
 		<executions>
 		  <execution>
 			<goals>
-              <goal>test-jar-no-fork</goal>
+              <goal>jar-no-fork</goal>
 			</goals>
 		  </execution>
 		</executions>
